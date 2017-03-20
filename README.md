@@ -11,7 +11,7 @@ Repository for reproduction of ruby remote debug issue in IntelliJ IDEA Ultimate
 ## Project setup
 
 - Find the example ruby files with example dependencies under src, the Gemfile contains two gems
-- The source is copied to /var/www within the docker container as part of the docker image build
+- The source is copied to /var/www within the docker container as part of the docker image build (https://github.com/KarolBuchta/ruby_remote_debug_test/blob/master/Dockerfile#L15)
 - bundle install is executed as part of the image build as well
 - You can connect to the running docker container by typing
 
