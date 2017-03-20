@@ -1,0 +1,13 @@
+version: "2"
+
+services:
+  rubytest:
+    container_name: rubytest
+    image: kb/rubytest
+    build:
+      context: ./
+    command: /usr/sbin/sshd -D 
+    ports:
+      - "2222:22"
+    volumes:
+      - ./src/:/var/www
