@@ -7,6 +7,20 @@ Repository for reproduction of ruby remote debug issue in IntelliJ IDEA Ultimate
 - RubyMine Version: 2016.3.2
 - IntelliJ IDEA Ultimate: 2016.3.5
 
+
+## Project setup
+
+- Find the example ruby files with example dependencies under src, the Gemfile contains two gems
+- The source is copied to /var/www within the docker container as part of the docker image build
+- bundle install is executed as part of the image build as well
+- You can connect to the running docker container by typing
+
+```
+  docker exec -it rubytest bash
+```
+- See steps below for a detailed reproduction case
+
+
 ## Reproduction of issue
 
 1.) Install docker compose and docker for the operating system of choice 
@@ -17,7 +31,7 @@ Repository for reproduction of ruby remote debug issue in IntelliJ IDEA Ultimate
 
 ```
 
-dc up
+docker-compose up
 
 ```
 
@@ -36,12 +50,16 @@ dc up
   Ruby Path: /usr/local/bin/ruby
 ```
 
-7.) Observe no Gems are found or copied to the local stubs folder, gems are not found.
+7.) Observe no Gems are found or copied to the local stubs folders, gems are not found by the IDE. The debugging previously used does also not work.
 
 
 ## Further infos
 
 - The same issue can be observed in both RubyMine as well as Ultimate.
 - We have tried this with .rbenv on our live docker container as well, it was with jruby. Gems where neither found nor copied as well.
-- We also tried this with a normal ruby within our dev container, so no jruby involved. Still the same issue.
 - This is the minimum config, with the official ruby docker image, still no success with discovering gems.
+
+# Role of this feature
+
+- This setting is becoming more and more popular as many people are using docker as well
+- This setting is critical for us as we use it to debug a central service in our application stack
