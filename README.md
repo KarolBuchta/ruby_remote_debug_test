@@ -37,7 +37,7 @@ docker-compose up
 
 4.) Open up the SDK Manager in IntelliJ IDEA Ultimate (Right Click Module -> Open Module settings) or in RubyMine via Preferences
 
-5.) Add new Ruby SDK => Choose SSH credentials
+5.) Add new Ruby SDK => Choose remote => Choose SSH credentials
 
 6.) Use following settings:
 
